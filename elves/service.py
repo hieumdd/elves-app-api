@@ -8,6 +8,6 @@ import bigquery
 def service(pipeline: interface.Pipeline):
     return compose(
         lambda x: {"output_rows": x},
-        bigquery.load("Analytics", pipeline.schema),
+        bigquery.load(pipeline.name, pipeline.schema),
         repo.get,
     )(pipeline.url)
