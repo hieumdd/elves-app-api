@@ -1,23 +1,9 @@
-from typing import Any
-
-from compose import compose
-
-from repo import get
-from bigquery import load
-from pipeline import transform, schema
-
-
-def service():
-    return compose(
-        lambda x: {"output_rows": x},
-        load("Analytics", schema),
-        transform,
-        get,
-    )()
+from elves.service import service
+from elves.pipeline import pipelines
 
 
 def main(request):
-    response = service()
+    response = [service(pipeline) for pipeline in pipelines.values()]
 
     print(response)
-    return response
+    return {"response": response}
