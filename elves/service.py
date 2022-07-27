@@ -9,5 +9,6 @@ def service(pipeline: interface.Pipeline):
     return compose(
         lambda x: {"output_rows": x},
         bigquery.load(pipeline.name, pipeline.schema),
+        pipeline.transform,
         repo.get,
     )(pipeline.url)
