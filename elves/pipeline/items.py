@@ -35,6 +35,7 @@ pipeline = interface.Pipeline(
         {"name": "title", "type": "STRING"},
         {"name": "quantity", "type": "NUMERIC"},
         {"name": "price", "type": "NUMERIC"},
+        {"name": "price_original", "type": "NUMERIC"},
         {"name": "cost", "type": "NUMERIC"},
     ],
 )
