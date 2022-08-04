@@ -17,6 +17,7 @@ pipeline = interface.Pipeline(
             "title": row.get("title"),
             "quantity": row.get("quantity"),
             "price": row.get("price"),
+            "price_original": row.get("price_original"),
             "cost": row.get("cost"),
         }
         for row in rows
