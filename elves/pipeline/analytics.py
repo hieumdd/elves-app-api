@@ -1,4 +1,9 @@
+from typing import Optional
+
 from elves.pipeline import interface
+
+def round_numeric(value: Optional[float]):
+    return round(value, 6) if value else None
 
 pipeline = interface.Pipeline(
     name="Analytics",
@@ -34,7 +39,7 @@ pipeline = interface.Pipeline(
             "cost_shipping_currency": row.get("cost_shipping_currency"),
             "cost_customs": row.get("cost_customs"),
             "cost_customs_currency": row.get("cost_customs_currency"),
-            "elves_fee": row.get("elves_fee"),
+            "elves_fee": round_numeric(row.get("elves_fee")),
             "elves_shipping": row.get("elves_shipping"),
             "elves_fee_refunded": row.get("elves_fee_refunded"),
             "elves_shipping_refunded": row.get("elves_shipping_refunded"),
